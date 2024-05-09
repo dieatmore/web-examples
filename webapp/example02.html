@@ -6,26 +6,30 @@
     <title>Document</title>
   </head>
   <body>
-    <form action="register" method="post">
+    <form action="/register" method="post">
       <div id="个人信息">
         <h2>个人信息</h2>
         用户名：
-        <input type="text" name="user_name" required />
+        <input type="text" required />
         <br />
         密码：
-        <input type="password" name="password" required />
+        <input type="password" required />
         <br />
         性别：
-        <input id="sex1" type="radio" name="sex" required />
-        <label for="sex1">男</label>
-        <input id="sex2" type="radio" name="sex" />
-        <label for="sex2">女</label>
+        <label for="sex1">
+          <input id="sex1" type="radio" name="sex" required />
+          男
+        </label>
+        <label for="sex2">
+          <input id="sex2" type="radio" name="sex" />
+          女
+        </label>
         <br />
         生日：
-        <input type="datetime-local" name="datetime-local" required />
+        <input type="date" name="birth" required />
         <br />
         籍贯：
-        <input list="native_place" name="native_place" required />
+        <input list="native_place" required />
         <datalist id="native_place">
           <option>哈尔滨</option>
           <option>沈阳</option>
@@ -33,12 +37,11 @@
         </datalist>
         <br />
         学历：
-        <select name="education">
+        <select>
           <option selected>学士</option>
           <option>硕士</option>
           <option>博士</option>
         </select>
-        <br />
       </div>
       <div id="其它信息">
         <h2>其它信息</h2>
@@ -46,30 +49,36 @@
         <br />
         <ul>
           <li>
-            <input id="course1" type="checkbox" checked />
-            <label for="course1">Web开发技术</label>
+            <label for="course1">
+              <input id="course1" type="checkbox" checked />
+              Web开发技术
+            </label>
           </li>
           <li>
-            <input id="course2" type="checkbox" />
-            <label for="course2">Java程序设计</label>
+            <label for="course2">
+              <input id="course2" type="checkbox" />
+              Java程序设计
+            </label>
           </li>
           <li>
-            <input id="course3" type="checkbox" />
-            <label for="course3">数据库原理</label>
+            <label for="course3">
+              <input id="course3" type="checkbox" />
+              数据库原理
+            </label>
           </li>
           <li>
-            <input id="course4" type="checkbox" />
-            <label for="course4">系统分析与测试</label>
+            <label for="course4">
+              <input id="course4" type="checkbox" />
+              系统分析与测试
+            </label>
           </li>
         </ul>
-        <br />
         照片：
-        <input type="file" accept=".png" />
-        <br />
-        <br />
-        <button type="submit">提交</button>
-        <button type="reset">重置</button>
+        <input type="file" accept=".png，.jpg" />
       </div>
+      <br />
+      <button type="submit">提交</button>
+      <button type="reset">重置</button>
     </form>
   </body>
 </html>

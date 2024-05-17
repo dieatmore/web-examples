@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .badge { 
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            position: relative;
+           
+        }
+        .alarm {
+            font-size: 3em;
+        }
+        .badge-wrapper {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: red;
+            border-radius: 50%;
+            padding: 2px;
+            border: 3px solid white;
+        }
+        .wrapper {
+            color: white;
+        }
+    </style>
+  <body>
+    <div class="badge">
+        <div class="badge-content">
+            <i class="material-icons alarm">alarm_on</i>
+        </div>
+        <div class="badge-wrapper">
+          <span class="wrapper">12</span>
+       </div>
+    </div>
+  </body>
+</html>

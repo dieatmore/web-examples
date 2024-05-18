@@ -1,110 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      .container {
-        max-width: 100%;
-      }
-      .row {
-        display: flex;
-        align-items: flex-start;
-      }
-      .sidebar {
-        min-width: 180px;
-        display: flex;
-        flex-direction: column;
-        background-color: darkorange;
-        position: relative; /* 新增，为子元素定位 */
-      }
-      .sidebar-item {
-        padding: 10px 15px;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        position: relative; /* 新增，为子元素定位 */
-        z-index: 2; /* 新增，确保在展开时文字在顶层 */
-      }
-      .sidebar-item * {
-        vertical-align: middle;
-      }
-      .sidebar-item i {
-        margin: 10px 5px;
-      }
-      .sidebar-item:link,
-      .sidebar-item:visited {
-        color: #000;
-      }
-      .sidebar-item:hover {
-        background-color: white;
-      }
-      .sidebar-item:hover i {
-        color: red;
-      }
-      .sidebar-expand {
-        display: none; /* 默认不显示 */
-        position: absolute;
-        top: 0;
-        left: 60px;
-        bottom: 0;
-        right: 0;
-        background-color: darkorange;
-        z-index: 1; /* 确保在展开时在文字下层 */
-      }
-      .sidebar:hover .sidebar-expand {
-        display: block; /* 悬停时显示 */
-      }
-      @media (max-width: 600px) {
-        .sidebar {
-          min-width: 60px;
-        }
-        .sidebar-item span {
-          display: none;
-        }
-        .sidebar:hover .sidebar-item span {
-          display: inline;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="sidebar">
-          <a href="#" class="sidebar-item">
-            <i class="material-icons">dashboard</i>
-            <span>Dashboard</span>
-          </a>
-          <a href="#" class="sidebar-item">
-            <i class="material-icons">computer</i>
-            <span>Computer</span>
-          </a>
-          <a href="#" class="sidebar-item">
-            <i class="material-icons">timelapse</i>
-            <span>Timelapse</span>
-          </a>
-          <a href="#" class="sidebar-item">
-            <i class="material-icons">style</i>
-            <span>Style</span>
-          </a>
-          <a href="#" class="sidebar-item">
-            <i class="material-icons">date_range</i>
-            <span>Date</span>
-          </a>
-          <div class="sidebar-expand"></div>
-        </div>
-        <div class="content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique facil
-        </div>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form表单布局</title>
+<style>
+*{
+    /* width: 100%; */
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.form-group{  
+    display: flex;
+    padding-bottom: 1rem;
+}
+.form-label{
+    flex: 20%; 
+    text-align: right;
+    height: 100%;
+    line-height: 100%;
+
+}  
+.form-input{
+    flex: 80%;
+}
+.text .form-input{
+    height: 2.5rem;
+    border-top:3px solid #8c8c8c;
+    border-left: 3px solid #8c8c8c;
+    border-bottom:2px solid #dddddd;
+    border-right: 2px solid #dddddd;
+    border-radius: 5px;
+ }
+
+</style>
+</head>
+<body>
+    <div class="text">
+    <div class="form-group">
+        <label class="form-label" for="username">用户名 &nbsp;</label>
+        <input type="text" class="form-input" id="username" required>      
+    </div> 
+    <div class="form-group">        
+        <label class="form-label" for="passwordcode">密码 &nbsp; </label>
+        <input type="password" class="form-input" id="passwordcode" required>
+    </div> 
+    </div>    
+    <div class="form-group">
+        <p class="form-label">性别 &nbsp;</p>
+        <div class="form-input">
+            <label><input type="radio" name="gender">男</label>
+            <label><input type="radio" name="gender">女</label>
+        </div>        
     </div>
-  </body>
+    </div>
+</div> 
+        
+</body>
 </html>

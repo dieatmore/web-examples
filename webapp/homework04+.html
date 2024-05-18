@@ -23,53 +23,48 @@
         display: flex;
         flex-direction: column;
         background-color: darkorange;
-        position: relative; /* 新增，为子元素定位 */
       }
-      .sidebar-item {
+      .sidebar a {
+        position: relative;
         padding: 10px 15px;
         text-decoration: none;
         display: flex;
         align-items: center;
-        position: relative; /* 新增，为子元素定位 */
-        z-index: 2; /* 新增，确保在展开时文字在顶层 */
       }
-      .sidebar-item * {
-        vertical-align: middle;
-      }
-      .sidebar-item i {
+      .sidebar a i {
         margin: 10px 5px;
       }
-      .sidebar-item:link,
-      .sidebar-item:visited {
+      .sidebar a:link {
         color: #000;
       }
-      .sidebar-item:hover {
+      .sidebar a:visited {
+        color: #000;
+      }
+      .sidebar a:hover {
         background-color: white;
       }
-      .sidebar-item:hover i {
+      .sidebar a:hover i {
         color: red;
-      }
-      .sidebar-expand {
-        display: none; /* 默认不显示 */
-        position: absolute;
-        top: 0;
-        left: 60px;
-        bottom: 0;
-        right: 0;
-        background-color: darkorange;
-        z-index: 1; /* 确保在展开时在文字下层 */
-      }
-      .sidebar:hover .sidebar-expand {
-        display: block; /* 悬停时显示 */
       }
       @media (max-width: 600px) {
         .sidebar {
           min-width: 60px;
+          transition: all 0.5s;
+          z-index: 2;
         }
-        .sidebar-item span {
+        .content {
+          position: fixed;
+          left: 70px;
+          top: 0;
+          z-index: 1;
+        }
+        .sidebar span {
           display: none;
         }
-        .sidebar:hover .sidebar-item span {
+        .sidebar:hover {
+          min-width: 180px;
+        }
+        .sidebar:hover span {
           display: inline;
         }
       }
@@ -79,30 +74,41 @@
     <div class="container">
       <div class="row">
         <div class="sidebar">
-          <a href="#" class="sidebar-item">
+          <a href="#">
             <i class="material-icons">dashboard</i>
             <span>Dashboard</span>
           </a>
-          <a href="#" class="sidebar-item">
+
+          <a href="#">
             <i class="material-icons">computer</i>
             <span>Computer</span>
           </a>
-          <a href="#" class="sidebar-item">
+
+          <a href="#">
             <i class="material-icons">timelapse</i>
             <span>Timelapse</span>
           </a>
-          <a href="#" class="sidebar-item">
+
+          <a href="#">
             <i class="material-icons">style</i>
             <span>Style</span>
           </a>
-          <a href="#" class="sidebar-item">
+
+          <a href="#">
             <i class="material-icons">date_range</i>
             <span>Date</span>
           </a>
-          <div class="sidebar-expand"></div>
         </div>
+
         <div class="content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique facil
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique facilis consequatur
+          sunt! Officia corrupti veniam at error distinctio perferendis. Reiciendis quae cum at
+          beatae, iure, culpa nisi cupiditate, natus dolorem esse Lorem ipsum dolor sit amet
+          consectetur adipisicing elit. Ratione, atque ea eveniet quas consectetur ut sint quasi
+          eius esse nulla perferendis quibusdam ipsa laborum mollitia, blanditiis molestias nemo
+          delectus sed?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat nobis qui
+          expedita praesentium. Modi, laboriosam, suscipit expedita exercitationem dolor fuga
+          aperiam consectetur illum consequatur ad sapiente accusamus architecto delectus! Numquam?
         </div>
       </div>
     </div>

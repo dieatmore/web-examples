@@ -18,16 +18,14 @@
         align-items: flex-start;
       }
       .card {
-        width: 250px;
         border-radius: 8px;
-        border: none;
         margin: 10px;
-        padding: 10px 15px;
       }
       .card-header {
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
       }
       .card-header img {
         opacity: 0.5;
@@ -37,8 +35,9 @@
       }
       .card-content {
         text-align: justify;
-        transition: transform 0.5s;
-        display: none;
+        transition: transform 0.5s, opacity 0.1s;
+        position: absolute;
+        opacity: 0;
       }
       .card-footer a {
         display: inline-block;
@@ -49,14 +48,21 @@
         background-color: rgb(255, 0, 0);
         opacity: 0.5;
       }
+      .card:hover {
+        height: 400px;
+      }
       .card:hover img {
         opacity: 1;
-        transform: translateY(-50px);
+        transform: translateY(-115px);
+      }
+      .card:hover .card-footer {
+        transform: translateY(150px);
       }
       .card:hover .card-content {
-        display: block;
-        transform: translateY(-50px);
+        opacity: 1;
+        transform: translateY(115px);
       }
+
       .card-footer a:hover {
         opacity: 1;
       }
@@ -68,13 +74,13 @@
         <div class="card">
           <div class="card-header">
             <img src="https://picsum.photos/200/200/?random=1" alt="" />
-          </div>
-          <div class="card-content">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium debitis dolorum
-              ducimus iste laudantium non optio reprehenderit tenetur ullam! Aliquid at, commodi
-              deserunt dolorem eligendi fugiat natus nihil non nostrum quisquam, ratione.
-            </p>
+            <div class="card-content">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium debitis
+                dolorum ducimus iste laudantium non optio reprehenderit tenetur ullam! Aliquid at,
+                commodi deserunt dolorem eligendi fugiat natus nihil non nostrum quisquam, ratione.
+              </p>
+            </div>
           </div>
           <div class="card-footer">
             <a class="more" href="">Read More</a>
@@ -83,14 +89,15 @@
         <div class="card">
           <div class="card-header">
             <img src="https://picsum.photos/200/200/?random=2" alt="" />
+            <div class="card-content">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium debitis
+                dolorum ducimus iste laudantium non optio reprehenderit tenetur ullam! Aliquid at,
+                commodi deserunt dolorem eligendi fugiat natus nihil non nostrum quisquam, ratione.
+              </p>
+            </div>
           </div>
-          <div class="card-content">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium debitis dolorum
-              ducimus iste laudantium non optio reprehenderit tenetur ullam! Aliquid at, commodi
-              deserunt dolorem eligendi fugiat natus nihil non nostrum quisquam, ratione.
-            </p>
-          </div>
+
           <div class="card-footer">
             <a class="more" href="">Read More</a>
           </div>
@@ -98,14 +105,15 @@
         <div class="card">
           <div class="card-header">
             <img src="https://picsum.photos/200/200/?random=3" alt="" />
+            <div class="card-content">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium debitis
+                dolorum ducimus iste laudantium non optio reprehenderit tenetur ullam! Aliquid at,
+                commodi deserunt dolorem eligendi fugiat natus nihil non nostrum quisquam, ratione.
+              </p>
+            </div>
           </div>
-          <div class="card-content">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium debitis dolorum
-              ducimus iste laudantium non optio reprehenderit tenetur ullam! Aliquid at, commodi
-              deserunt dolorem eligendi fugiat natus nihil non nostrum quisquam, ratione.
-            </p>
-          </div>
+
           <div class="card-footer">
             <a class="more" href="">Read More</a>
           </div>

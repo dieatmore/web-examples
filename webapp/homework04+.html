@@ -49,13 +49,13 @@
       @media (max-width: 600px) {
         .sidebar {
           min-width: 60px;
-          transition: all 0.5s;
+          transition: min-width 0.5s;
+          position: absolute;
           z-index: 2;
         }
         .content {
           position: fixed;
           left: 70px;
-          top: 0;
           z-index: 1;
         }
         .sidebar span {

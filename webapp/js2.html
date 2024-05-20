@@ -12,14 +12,11 @@
     </div>
     <script>
       let timeoutID = 0
-      function upperCase(input) {
+      let upper = (input) => {
         clearTimeout(timeoutID)
         timeoutID = setTimeout(() => {
           input.value = input.value.toUpperCase()
         }, 2000)
-      }
-      let upper = (input) => {
-        upperCase(input)
       }
     </script>
   </body>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <p>选择课程后，传递id值，过滤出对象，显示在下面</p>
+      <select name="course" onchange="loopFilter(this.value)">
+        <option value="1">Java</option>
+        <option value="2">Web</option>
+        <option value="3">Python</option>
+      </select>
+      <span id="teacherName"></span>
+    </div>
+    <script>
+      let loopFilter = (value) => {
+        let courses = [
+          { id: 1, courseName: 'Java', teacherName: 'BO' },
+          { id: 2, courseName: 'Web', teacherName: 'SUN' },
+          { id: 3, courseName: 'Python', teacherName: 'ZHANG' }
+        ]
+        let course = courses.find((s) => s.id == value)
+        document.getElementById('teacherName').innerHTML = course != null ? course.teacherName : ''
+      }
+    </script>
+  </body>
+</html>

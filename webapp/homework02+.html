@@ -32,12 +32,14 @@
         border-radius: 50%;
         object-fit: cover;
         transition: transform 0.5s;
+        z-index: 2;
       }
       .card-content {
         text-align: justify;
         transition: transform 0.5s, opacity 0.1s;
         position: absolute;
         opacity: 0;
+        z-index: 1;
       }
       .card-footer a {
         display: inline-block;

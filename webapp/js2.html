@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <p>当 2s 后输入框没有输入时，将输入字母转为大写</p>
+      <input type="text" onkeyup="upper(this)" />
+    </div>
+    <script>
+      let timeoutID = 0
+      function upperCase(input) {
+        clearTimeout(timeoutID)
+        timeoutID = setTimeout(() => {
+          input.value = input.value.toUpperCase()
+        }, 2000)
+      }
+      let upper = (input) => {
+        upperCase(input)
+      }
+    </script>
+  </body>
+</html>

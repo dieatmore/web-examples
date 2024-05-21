@@ -16,13 +16,13 @@
       <span id="teacherName"></span>
     </div>
     <script>
-      let loopFilter = (value) => {
-        let courses = [
+      const loopFilter = (value) => {
+        const courses = [
           { id: 1, courseName: 'Java', teacherName: 'BO' },
           { id: 2, courseName: 'Web', teacherName: 'SUN' },
           { id: 3, courseName: 'Python', teacherName: 'ZHANG' }
         ]
-        let course = courses.find((s) => s.id == value)
+        const course = courses.find((s) => s.id == value)
         document.getElementById('teacherName').innerHTML = course != null ? course.teacherName : ''
       }
     </script>

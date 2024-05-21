@@ -8,15 +8,24 @@
   <body>
     <div class="container">
       <p>当 2s 后输入框没有输入时，将输入字母转为大写</p>
-      <input type="text" onkeyup="upper(this)" />
+      <input type="text" style="width: 100%" onkeyup="set(this)" onkeydown="clear()" />
     </div>
     <script>
-      let timeoutID = 0
-      let upper = (input) => {
+      let timeoutID
+      function setTimer(input) {
         clearTimeout(timeoutID)
         timeoutID = setTimeout(() => {
           input.value = input.value.toUpperCase()
         }, 2000)
+      }
+      function clearTimer() {
+        clearTimeout(timeoutID)
+      }
+      let set = (this) => {
+        setTimer(this)
+      }
+      let clear = () => {
+        clearTimer()
       }
     </script>
   </body>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function insertstr(str, index, char) {
+        return str.slice(0, index) + char + str.slice(index)
+      }
+      function milli(number) {
+        let num = number.toString()
+        let j = 1
+        for (let i = num.length - 1; i >= 0; i--) {
+          if (i != 0 && j % 3 == 0) {
+            num = insertstr(num, i, ',')
+          }
+          j++
+        }
+        return num
+      }
+      console.log(milli(1234567891124))
+    </script>
+  </body>
+</html>

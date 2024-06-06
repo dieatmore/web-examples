@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>以下四个学科可选两个</p>
+    <label>
+      <input type="checkbox" name="subject" />
+      地理
+    </label>
+    <label>
+      <input type="checkbox" name="subject" />
+      生物
+    </label>
+    <label>
+      <input type="checkbox" name="subject" />
+      化学
+    </label>
+    <label>
+      <input type="checkbox" name="subject" />
+      政治
+    </label>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        const amount = 2
+        const checkboxs = $('input[name=subject]')
+        checkboxs.click(() => {
+          let dis = checkboxs.filter(':checked').length >= amount
+          checkboxs.not(':checked').prop('disabled', dis)
+        })
+      })
+    </script>
+  </body>
+</html>

@@ -84,19 +84,50 @@
           $('#course-table').append(data)
         })
 
+        //反复查询
+        //   $(':checkbox').click(function () {
+        //     const selectId = $(this).data('id')
+        //     const selected = $(this).prop('checked')
+        //     const course = courses.find((c) => c.id == selectId)
+        //     courses
+        //       .filter((c) => c.id != selectId)
+        //       .filter((c) => c.dayOfWeek == course.dayOfWeek)
+        //       .filter((c) => c.period == course.period)
+        //       .filter(
+        //         (c) =>
+        //           (c.startWeek >= course.startWeek && c.startWeek <= course.endWeek) ||
+        //           (c.endWeek >= course.startWeek && c.endWeek <= course.endWeek)
+        //       )
+        //       .forEach(
+        //         (c) => (
+        //           $(`input[data-id=${c.id}]`).prop('disabled', selected),
+        //           $(`input[data-id=${c.id}]`).prop('opacity', selected ? 0.2 : 1.0)
+        //         )
+        //       )
+        //   })
+
+        const conflictMap = new Map()
         $(':checkbox').click(function () {
           const selectId = $(this).data('id')
           const selected = $(this).prop('checked')
-          const course = courses.find((c) => c.id == selectId)
-          courses
-            .filter((c) => c.id != selectId)
-            .filter((c) => c.dayOfWeek == course.dayOfWeek)
-            .filter((c) => c.period == course.period)
-            .filter(
-              (c) =>
-                (c.startWeek >= course.startWeek && c.startWeek <= course.endWeek) ||
-                (c.endWeek >= course.startWeek && c.endWeek <= course.endWeek)
-            )
+          //如果不存在
+          if (!conflictMap.get(selectId)) {
+            const conflictCourses = []
+            const course = courses.find((c) => c.id == selectId)
+            courses
+              .filter((c) => c.id != selectId)
+              .filter((c) => c.dayOfWeek == course.dayOfWeek)
+              .filter((c) => c.period == course.period)
+              .filter(
+                (c) =>
+                  (c.startWeek >= course.startWeek && c.startWeek <= course.endWeek) ||
+                  (c.endWeek >= course.startWeek && c.endWeek <= course.endWeek)
+              )
+              .forEach((c) => conflictCourses.push(c))
+            conflictMap.set(selectId, conflictCourses)
+          }
+          conflictMap
+            .get(selectId)
             .forEach(
               (c) => (
                 $(`input[data-id=${c.id}]`).prop('disabled', selected),

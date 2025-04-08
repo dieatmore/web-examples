@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+    <style>
+      .s1 {
+        position: relative;
+        display: inline-block;
+      }
+      .s2 {
+        background-color: #15e959;
+        padding: 16px;
+        color: white;
+      }
+      .s3 {
+        display: none;
+        position: absolute;
+      }
+      .s2:hover ~ .s3 {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="s1">
+      <p class="s2">mouse over me</p>
+      <div class="s3">
+        <ul>
+          <li>Link 1</li>
+          <li>Link 2</li>
+          <li>Link 3</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

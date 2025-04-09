@@ -85,17 +85,14 @@
         })
 
         const conflictMap = new Map()
-        const conflictNum = new Map()
-        const number = 0
-        courses.forEach((c) => conflictNum.set(c.id, number))
-        console.log(conflictNum)
-        $(':checkbox').click(function () {
+        $('input[data-id]').click(function () {
           const selectId = $(this).data('id')
           const selected = $(this).prop('checked')
-          let num = 0
+          let conflictCourses = conflictMap.get(selected)
           //如果不存在
-          if (!conflictMap.get(selectId)) {
-            const conflictCourses = []
+          if (!conflictCourses) {
+            conflictCourses = []
+            let courseWhere = null
             const course = courses.find((c) => c.id == selectId)
             courses
               .filter((c) => c.id != selectId)
@@ -106,30 +103,27 @@
                   (c.startWeek >= course.startWeek && c.startWeek <= course.endWeek) ||
                   (c.endWeek >= course.startWeek && c.endWeek <= course.endWeek)
               )
-              .forEach((c) =>
-                conflictCourses.push({ conflictData: c, courseData: $(`input[data-id=${c.id}]`) })
+              .forEach(
+                (c) => (
+                  (courseWhere = $(`input[data-id=${c.id}]`)),
+                  conflictCourses.push({
+                    conflictData: c,
+                    courseData: courseWhere,
+                    rowData: courseWhere.parent().parent()
+                  }),
+                  !c.num && (c.num = 0)
+                )
               )
             conflictMap.set(selectId, conflictCourses)
           }
-          //计算冲突次数
-          conflictMap
-            .get(selectId)
-            .forEach(
-              (c) => (
-                (num = conflictNum.get(c.conflictData.id)),
-                conflictNum.set(c.conflictData.id, selected ? ++num : --num)
-              )
+          conflictCourses.forEach(
+            (c) => (
+              (c.conflictData.num = selected ? ++c.conflictData.num : --c.conflictData.num),
+              c.courseData.prop('disabled', c.conflictData.num > 0),
+              c.rowData.css('opacity', c.conflictData.num > 0 ? 0.4 : 1.0)
             )
-          let judge = 0
-          conflictMap
-            .get(selectId)
-            .forEach(
-              (c) => (
-                (judge = conflictNum.get(c.conflictData.id)),
-                c.courseData.prop('disabled', judge > 0),
-                c.courseData.prop('opacity', judge > 0 ? 0.4 : 1.0)
-              )
-            )
+          )
+          console.log(courses)
         })
       })
 

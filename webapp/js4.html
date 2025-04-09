@@ -84,32 +84,15 @@
           $('#course-table').append(data)
         })
 
-        //反复查询
-        //   $(':checkbox').click(function () {
-        //     const selectId = $(this).data('id')
-        //     const selected = $(this).prop('checked')
-        //     const course = courses.find((c) => c.id == selectId)
-        //     courses
-        //       .filter((c) => c.id != selectId)
-        //       .filter((c) => c.dayOfWeek == course.dayOfWeek)
-        //       .filter((c) => c.period == course.period)
-        //       .filter(
-        //         (c) =>
-        //           (c.startWeek >= course.startWeek && c.startWeek <= course.endWeek) ||
-        //           (c.endWeek >= course.startWeek && c.endWeek <= course.endWeek)
-        //       )
-        //       .forEach(
-        //         (c) => (
-        //           $(`input[data-id=${c.id}]`).prop('disabled', selected),
-        //           $(`input[data-id=${c.id}]`).prop('opacity', selected ? 0.4 : 1.0)
-        //         )
-        //       )
-        //   })
-
         const conflictMap = new Map()
+        const conflictNum = new Map()
+        const number = 0
+        courses.forEach((c) => conflictNum.set(c.id, number))
+        console.log(conflictNum)
         $(':checkbox').click(function () {
           const selectId = $(this).data('id')
           const selected = $(this).prop('checked')
+          let num = 0
           //如果不存在
           if (!conflictMap.get(selectId)) {
             const conflictCourses = []
@@ -123,15 +106,28 @@
                   (c.startWeek >= course.startWeek && c.startWeek <= course.endWeek) ||
                   (c.endWeek >= course.startWeek && c.endWeek <= course.endWeek)
               )
-              .forEach((c) => conflictCourses.push(c))
+              .forEach((c) =>
+                conflictCourses.push({ conflictData: c, courseData: $(`input[data-id=${c.id}]`) })
+              )
             conflictMap.set(selectId, conflictCourses)
           }
+          //计算冲突次数
           conflictMap
             .get(selectId)
             .forEach(
               (c) => (
-                $(`input[data-id=${c.id}]`).prop('disabled', selected),
-                $(`input[data-id=${c.id}]`).prop('opacity', selected ? 0.4 : 1.0)
+                (num = conflictNum.get(c.conflictData.id)),
+                conflictNum.set(c.conflictData.id, selected ? ++num : --num)
+              )
+            )
+          let judge = 0
+          conflictMap
+            .get(selectId)
+            .forEach(
+              (c) => (
+                (judge = conflictNum.get(c.conflictData.id)),
+                c.courseData.prop('disabled', judge > 0),
+                c.courseData.prop('opacity', judge > 0 ? 0.4 : 1.0)
               )
             )
         })

@@ -111,7 +111,7 @@
                     courseData: courseWhere,
                     rowData: courseWhere.parent().parent()
                   }),
-                  !c.num && (c.num = 0)
+                  (c.num ??= 0)
                 )
               )
             conflictMap.set(selectId, conflictCourses)
@@ -123,7 +123,6 @@
               c.rowData.css('opacity', c.conflictData.num > 0 ? 0.4 : 1.0)
             )
           )
-          console.log(courses)
         })
       })
 

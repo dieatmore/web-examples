@@ -89,6 +89,7 @@
           const selectId = $(this).data('id')
           const selected = $(this).prop('checked')
           let conflictCourses = conflictMap.get(selected)
+          //如果不存在
           if (!conflictCourses) {
             conflictCourses = []
             let courseWhere = null
